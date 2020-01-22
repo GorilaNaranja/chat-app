@@ -1,38 +1,33 @@
 <template>
   <div>
-    <h1>ROOM {{ roomId }}</h1>
-    <v-row>
+    <v-flex d-flex>
+      <v-icon @click="$router.go(-1)">mdi-chevron-left</v-icon>
+      <h1 class="ma-4">ROOM {{ roomId }}</h1>
+    </v-flex>
+    <v-row fluid>
+      <v-col md="3" lg="3" style="height: 700px" class="pa-0 overflow-y-auto">
+        <UsersConnected :users="usersConnected"></UsersConnected>
+      </v-col>
       <v-col
         id="messages"
-        style="height: 700px"
-        class="contenedor pa-2 overflow-y-auto"
+        style="height: 700px;"
+        class="pa-0 overflow-y-auto"
+        md="9"
+        lg="9"
       >
         <MessagesList :messages="messages"></MessagesList>
       </v-col>
-      <v-col
-        cols="6"
-        md="4"
-        style="height: 700px"
-        class="contenedor pa-2 overflow-y-auto"
-      >
-        <UsersConnected :users="usersConnected"></UsersConnected>
-      </v-col>
     </v-row>
-    <v-row>
-      <v-col>
-        <v-text-field
-          @keyup.enter="sendMessage"
-          v-model="message"
-          outlined
-          shaped
-          placeholder="Type here ..."
-        ></v-text-field>
-      </v-col>
-      <v-col cols="2">
-        <v-btn @click.prevent="sendMessage" outlined block color="info"
-          >Send</v-btn
-        >
-      </v-col>
+    <v-row class="mt-4">
+      <v-text-field
+        v-model="message"
+        @keyup.enter="sendMessage"
+        @click:append-outer="sendMessage"
+        append-outer-icon="mdi-send"
+        outlined
+        shaped
+        placeholder="Type here ..."
+      ></v-text-field>
     </v-row>
   </div>
 </template>
@@ -43,7 +38,8 @@ import { mapGetters } from 'vuex'
 import UsersConnected from '~/components/UsersConnected'
 import MessagesList from '~/components/MessagesList'
 
-const host = 'http://localhost:3000'
+// const host = 'http://localhost:3000'
+const host = process.env.API_URL
 
 export default {
   middleware: ['authenticated'],

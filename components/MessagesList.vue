@@ -1,9 +1,9 @@
 <template>
-  <v-card outlined tile>
+  <div>
     <v-card-text v-for="message in messages" :key="message.id">
       <Message :message="message"></Message>
     </v-card-text>
-  </v-card>
+  </div>
 </template>
 
 <script>

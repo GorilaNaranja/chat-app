@@ -4,9 +4,15 @@
     <v-card-text>
       <v-text-field v-model="user.name" label="Name"></v-text-field>
       <v-text-field v-model="user.email" label="Email"></v-text-field>
-      <v-text-field v-model="user.password" label="Password"></v-text-field>
+      <v-text-field
+        v-model="user.password"
+        @click:append="showPass = !showPass"
+        :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="showPass ? 'text' : 'password'"
+        label="Password"
+      ></v-text-field>
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions class="justify-center">
       <v-btn @click="submit" class="btn float-right btn-dark">Register</v-btn>
       <v-btn
         @click="$router.push({ name: 'login' })"
@@ -23,6 +29,7 @@ import { mapActions } from 'vuex'
 export default {
   data() {
     return {
+      showPass: false,
       user: { name: null, email: null, password: null }
     }
   },

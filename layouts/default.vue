@@ -1,7 +1,6 @@
 <template>
-  <v-app dart>
+  <v-app dark>
     <Snackbar />
-
     <v-content>
       <v-container>
         <nuxt />
