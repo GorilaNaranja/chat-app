@@ -3,9 +3,7 @@
     <v-row no-gutters align="center">
       <v-col cols="md-2" class="text-right pr-2">
         <v-chip small>
-          <v-avatar left>
-            <v-icon>mdi-account-circle</v-icon>
-          </v-avatar>
+          <v-avatar left> <v-icon>mdi-account-circle</v-icon> </v-avatar>
           {{ message.user }}
         </v-chip>
       </v-col>

@@ -44,7 +44,6 @@ export default {
         await this.login(this.user)
         this.$router.push({ name: 'room' })
       } catch (err) {
-        console.log(err)
         this.$snackbar.alertError(err.message)
       }
     }

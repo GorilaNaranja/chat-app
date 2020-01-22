@@ -39,7 +39,7 @@ import UsersConnected from '~/components/UsersConnected'
 import MessagesList from '~/components/MessagesList'
 
 // const host = 'http://localhost:3000'
-const host = process.env.API_URL
+const host = process.env.API_URL || 'http://localhost:3000'
 
 export default {
   middleware: ['authenticated'],
@@ -86,10 +86,6 @@ export default {
     this.socket.on('usersConnected', (users) => {
       this.usersConnected = users
     })
-
-    // this.socket.on('createMsg', (data, roomId) => {
-    //   console.log('createMsg', data)
-    // })
   },
 
   updated() {

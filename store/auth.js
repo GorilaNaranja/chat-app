@@ -23,11 +23,6 @@ const actions = {
   async login({ commit }, data) {
     try {
       const user = await mgtService.login(data)
-      console.log('ACTION USER', {
-        email: user.user.email,
-        name: user.user.name,
-        token: user.token
-      })
 
       commit('SET_USER', {
         email: user.user.email,
@@ -41,16 +36,11 @@ const actions = {
   },
 
   async createUser({ commit }, data) {
-    console.log('data', data)
     try {
       await mgtService.createUser(data)
     } catch (error) {
       throw error
     }
-  },
-
-  async setUser({ commit }, user) {
-    await commit('SET_USER', user)
   }
 }
 
